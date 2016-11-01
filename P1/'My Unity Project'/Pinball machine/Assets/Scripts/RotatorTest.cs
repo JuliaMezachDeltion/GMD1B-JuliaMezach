@@ -3,6 +3,8 @@ using System.Collections;
 
 public class RotatorTest : MonoBehaviour {
 
+    public bool isRight;
+
     public float flipperStrength;
     public float pushForce;
     private HingeJoint hinge;
@@ -13,13 +15,23 @@ public class RotatorTest : MonoBehaviour {
 
 	}
 
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetButtonDown("Jump"))
         {
-            Vector3 f = transform.up * flipperStrength;
+            Vector3 f;
+
+            if (isRight)
+            {
+                f = transform.up * flipperStrength;
+            }
+
+            else
+            {
+                f = -transform.up * flipperStrength;
+            }
             Vector3 p = (transform.right) + transform.position * pushForce;
-            GetComponent<Rigidbody>().AddForceAtPosition(f, p);
+            GetComponent<Rigidbody>().AddForceAtPosition(f, transform.position);
         }
     }	
 }
