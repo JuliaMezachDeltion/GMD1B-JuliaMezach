@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Pinball Machine.unity
-  isLoaded: 1
-  isActive: 1
